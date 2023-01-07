@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controller\CategoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,10 +12,12 @@ Route :: group([
     Route :: post('login',[AuthController :: class,'login']) -> name('login');
 });
 
-// Router::group ([
-//     'middleware' => 'api'
-// ],function(){
-//     Route::resources(CategoryController :: class);
-// });
+Route::group ([
+    'middleware' => 'api'
+],function(){
+    Route::resources([
+       'categories' => CategoryController :: class
+    ]);
+});
 
 
